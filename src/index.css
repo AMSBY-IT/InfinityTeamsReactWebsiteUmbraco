@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+    background-color: #f4f5fa;
+  }
+
+  .timeline > li:last-child .vertical-line{
+    display: none;
+}
+
+.arrow:hover .arrow-svg{
+  fill: white;
+}
+
+
