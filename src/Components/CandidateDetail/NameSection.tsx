@@ -72,7 +72,7 @@ const NameSection = () => {
                     </div>
                 </div>
 
-                <div className="tw-flex max-sm:tw-w-full">
+                <div className="tw-flex max-sm:tw-w-full tw-hidden">
                     <a href="#" onClick={handleDownload} className="tw-py-5 tw-px-[30px] max-sm:tw-py-4 tw-flex tw-items-center tw-justify-center max-sm:tw-w-full tw-text-lg max-sm:tw-text-base tw-font-normal tw-rounded-md tw-text-white tw-bg-untitled-ui--primary800">Cv Download</a>
                 </div>
             </div>

@@ -45,7 +45,6 @@ export default function CandidateFilter() {
 
   const handleSelectChange = (selected:MultiValue<Selected>, type:string) => {
     const selectedGuids = selected.map((option) => option.guid);
-    console.log("selected",selected)
     if (type === "titles") {
       setDevelopertagIds(selectedGuids);
     } else if (type === "skills") {
