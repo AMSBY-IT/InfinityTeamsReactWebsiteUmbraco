@@ -15,4 +15,13 @@ body{
   fill: white;
 }
 
+.heart-icon:hover path {
+  fill: #7f56d9; 
+  stroke: none;
+}
+
+.heart-icon path {
+  stroke-width: 2px;
+}
+
 
