@@ -47,7 +47,7 @@ const CandidateCard = () => {
                             <div className="job__tags tw-flex tw-gap-2 tw-mt-4 tw-flex-wrap">
 
                                 {candidate.skills && candidate.skills.length > 0 ? candidate.skills.slice(0, 3).map((skill) => (
-                                    <a href="" className="tw-px-3 tw-py-2 tw-rounded-[4px] tw-whitespace-nowrap tw-bg-untitled-ui--primary600 tw-flex tw-leading-4 tw-capitalize tw-text-untitled-ui--primary100 tw-text-[14px]">{skill}</a>))
+                                    <a className="tw-px-3 tw-py-2 tw-rounded-[4px] tw-whitespace-nowrap tw-bg-untitled-ui--primary600 tw-flex tw-leading-4 tw-capitalize tw-text-untitled-ui--primary100 tw-text-[14px]">{skill}</a>))
                                     : <span>No skills listed</span>
                                 }
 
@@ -55,7 +55,7 @@ const CandidateCard = () => {
                             </div>
                             <div className="tw-flex tw-items-center tw-justify-end date-div tw-mt-auto">
                                 <div className="tw-flex tw-gap-3">
-                                    <a href=""><svg xmlns="http://www.w3.org/2000/svg" className="heart-icon tw-w-7" viewBox="0 0 36 36"><path fill="none" stroke="#7f56d9" d="M31.885 13.764a7.66 7.66 0 0 0-7.66-7.661A7.65 7.65 0 0 0 18 9.309a7.65 7.65 0 0 0-6.224-3.206a7.66 7.66 0 0 0-7.661 7.661c0 .6.076 1.18.206 1.74C5.385 22.113 12.733 29.085 18 31c5.266-1.915 12.614-8.887 13.678-15.496c.131-.56.207-1.14.207-1.74"/></svg></a>
+                                    <a><svg xmlns="http://www.w3.org/2000/svg" className="heart-icon tw-w-7" viewBox="0 0 36 36"><path fill="none" stroke="#7f56d9" d="M31.885 13.764a7.66 7.66 0 0 0-7.66-7.661A7.65 7.65 0 0 0 18 9.309a7.65 7.65 0 0 0-6.224-3.206a7.66 7.66 0 0 0-7.661 7.661c0 .6.076 1.18.206 1.74C5.385 22.113 12.733 29.085 18 31c5.266-1.915 12.614-8.887 13.678-15.496c.131-.56.207-1.14.207-1.74"/></svg></a>
                                 </div>
                             </div>
                         </div>

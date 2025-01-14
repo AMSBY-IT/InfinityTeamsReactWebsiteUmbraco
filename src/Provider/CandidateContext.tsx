@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
-import { Title,Skill,Countries,Levels,Candidates,CandidateProviderProps,CandidateContextProps } from "../Types/types";
+import { MultiValue } from "react-select"
+import { Title,Skill,Countries,Levels,Candidates,CandidateProviderProps,CandidateContextProps,Ischecked,Selected } from "../Types/types";
 
 
 export const CandidateContext = createContext<CandidateContextProps | undefined>(undefined);
@@ -21,6 +22,10 @@ export const CandidateProvider: React.FC<CandidateProviderProps>  = ({ children 
     const [levelIds, setLevelIds] = useState<string[]>([]);
     const [countryIds, setCountryIds] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
+    const [isChecked, setChecked] = useState<Ischecked>({});
+    const [selectedTitle,setSelectedTitle]=useState<MultiValue<Selected>>([]);
+    const [selectedCountries,setSelectedCountries]=useState<MultiValue<Selected>>([]);
+    const [selectedSkills,setSelectedSkills]=useState<MultiValue<Selected>>([])
     
     const fetchCandidates = async({
         page =currentPage,
@@ -151,6 +156,14 @@ export const CandidateProvider: React.FC<CandidateProviderProps>  = ({ children 
                 setLevelIds,
                 setCountryIds,
                 loading,
+                isChecked,
+                setChecked,
+                selectedTitle,
+                setSelectedTitle,
+                selectedCountries,
+                setSelectedCountries,
+                selectedSkills,
+                setSelectedSkills
             }}
         >
             {children}

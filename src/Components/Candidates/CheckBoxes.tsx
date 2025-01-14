@@ -1,6 +1,5 @@
 import { useContext, useState } from "react"
 import { CandidateContext } from "../../Provider/CandidateContext"
-import {Ischecked} from "../../Types/types"
 
 
 const CheckBoxes = () => {
@@ -10,9 +9,8 @@ const CheckBoxes = () => {
         return <div>error data is undefined</div>  
     }
 
-    const { levels, setLevelIds, }=data
+    const { levels, setLevelIds, isChecked,setChecked}=data
 
-    const [isChecked, setChecked] = useState<Ischecked>({});
 
     const [isDropdownOpen, setDropdownOpen] = useState<boolean>(true);
 
@@ -24,7 +22,6 @@ const CheckBoxes = () => {
     }));
 
     setLevelIds((prevGuids) => {
-            console.log("prevGuids",prevGuids)
             if (prevGuids.includes(guid)) {
                 return prevGuids.filter((existingGuid) => existingGuid !== guid);
             } else {

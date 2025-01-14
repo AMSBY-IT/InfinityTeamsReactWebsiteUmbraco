@@ -65,7 +65,7 @@ const NameSection = () => {
                         </div>
                         <div className="tw-flex tw-items-center tw-justify-start tw-gap-3 tw-flex-wrap max-sm:tw-justify-center">
                             {candidate.skills && candidate.skills.length > 0 ? candidate.skills.map((skill:string) => (
-                                <a href="" className="tw-px-3 tw-py-2 tw-rounded-[4px] tw-whitespace-nowrap tw-bg-untitled-ui--primary600 tw-flex tw-leading-4 tw-capitalize tw-text-untitled-ui--primary100 tw-text-[14px]">{skill}</a>))
+                                <a className="tw-px-3 tw-py-2 tw-rounded-[4px] tw-whitespace-nowrap tw-bg-untitled-ui--primary600 tw-flex tw-leading-4 tw-capitalize tw-text-untitled-ui--primary100 tw-text-[14px]">{skill}</a>))
                                 : <span>No skills listed</span>
                             }
                         </div>

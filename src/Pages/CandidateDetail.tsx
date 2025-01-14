@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Header from "../Components/Header";
 import NameSection from "../Components/CandidateDetail/NameSection";
 import CandidateInfo from "../Components/CandidateDetail/CandidateInfo";
@@ -5,6 +6,10 @@ import Footer from "../Components/Footer";
 
 
 function CandidateDetail() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <Header />

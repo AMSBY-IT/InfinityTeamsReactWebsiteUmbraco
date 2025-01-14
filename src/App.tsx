@@ -9,12 +9,14 @@ import CandidateDetail from "./Pages/CandidateDetail";
 const App = () => {
     return (
       <Router>
+        <CandidateProvider>
         <Routes>
-          <Route path="/" element={<CandidateProvider>
+          <Route path="/" element={
             <CandidateList />
-          </CandidateProvider>} />
+          } />
           <Route path="/candidatedetail/:id" element={<CandidateDetail />} />
         </Routes>
+        </CandidateProvider>
       </Router>
     );
   };

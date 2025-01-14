@@ -1,7 +1,7 @@
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import CandidateFilter from "../Components/Candidates/CandidateFilter";
-import { useContext, } from "react";
+import { useContext, useEffect} from "react";
 import Candidate from "../Components/Candidates/Candidate";
 import { CandidateContext } from "../Provider/CandidateContext";
 import Loader from "../Components/Loader";

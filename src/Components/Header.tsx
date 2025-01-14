@@ -24,7 +24,7 @@ function Header() {
                         <div className="tw-mx-auto max-sm:tw-w-11/12 max-lg:tw-w-11/12">
                             <nav className="tw-flex tw-justify-between tw-items-center">
                                 <div className="logo tw-font-bold tw-flex tw-items-center tw-text-sm">
-                                    <div className="  tw-mr-2">
+                                    <div className="tw-mr-2">
                                         <a href="/">
                                             <img src="https://infinity.devcodefire.com/wp-content/uploads/2024/10/infinityteam.png"
                                                 className="tw-h-14 " alt="" />

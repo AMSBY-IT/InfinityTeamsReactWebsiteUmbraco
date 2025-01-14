@@ -13,7 +13,12 @@ export default function CandidateFilter() {
     return <div>error data is undefined</div>  
   }
 
-  const { title, skill, countries, setSkillIds, setDevelopertagIds, setCountryIds }=data
+  const { title, skill, countries, setSkillIds, setDevelopertagIds, setCountryIds,selectedTitle,
+    setSelectedTitle,
+    selectedCountries,
+    setSelectedCountries,
+    selectedSkills,
+    setSelectedSkills }=data
 
   const developerOptions = title.map((t) => (
     {
@@ -46,10 +51,13 @@ export default function CandidateFilter() {
   const handleSelectChange = (selected:MultiValue<Selected>, type:string) => {
     const selectedGuids = selected.map((option) => option.guid);
     if (type === "titles") {
+      setSelectedTitle(selected)
       setDevelopertagIds(selectedGuids);
     } else if (type === "skills") {
+      setSelectedSkills(selected)
       setSkillIds(selectedGuids);
     } else if (type === "countries") {
+      setSelectedCountries(selected)
       setCountryIds(selectedGuids.toString());
     }
   };
@@ -114,7 +122,7 @@ export default function CandidateFilter() {
                   placeholder="Add Keywords"
                   isMulti
                   styles={customStyles}
-                  // isSearchable={false}
+                  value={selectedTitle}
                   onChange={(selected) => handleSelectChange(selected, "titles")}
                 />
               </div>
@@ -131,7 +139,7 @@ export default function CandidateFilter() {
                   placeholder="All Countries"
                   isMulti
                   styles={customStyles}
-                  // isSearchable={false}
+                  value={selectedCountries}
                   onChange={(selected) => handleSelectChange(selected, "countries")}
                 />
               </div>
@@ -148,7 +156,7 @@ export default function CandidateFilter() {
                   placeholder="Add Skills"
                   isMulti
                   styles={customStyles}
-                  // isSearchable={false}
+                  value={selectedSkills}
                   onChange={(selected) => handleSelectChange(selected, "skills")}
                 />
               </div>

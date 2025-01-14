@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { MultiValue } from "react-select"
 
 
 export interface CandidateContextProps {
@@ -19,6 +20,14 @@ export interface CandidateContextProps {
     setDevelopertagIds: React.Dispatch<React.SetStateAction<string[]>>;
     setLevelIds: React.Dispatch<React.SetStateAction<string[]>>;
     setCountryIds: React.Dispatch<React.SetStateAction<string>>;
+    isChecked:{[id:number]:boolean};
+    setChecked:React.Dispatch<React.SetStateAction<{[id:number]:boolean}>>;
+    selectedTitle:MultiValue<Selected>;
+    setSelectedTitle:React.Dispatch<React.SetStateAction<MultiValue<Selected>>>;
+    selectedCountries:MultiValue<Selected>;
+    setSelectedCountries:React.Dispatch<React.SetStateAction<MultiValue<Selected>>>;
+    selectedSkills:MultiValue<Selected>;
+    setSelectedSkills:React.Dispatch<React.SetStateAction<MultiValue<Selected>>>;
 }
 
 export interface CandidateProviderProps {
