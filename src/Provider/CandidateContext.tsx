@@ -31,7 +31,7 @@ export const CandidateProvider: React.FC<CandidateProviderProps>  = ({ children 
     const token = localStorage.getItem("token");
         
     const API_URL = import.meta.env.VITE_API_URL
-    console.log(API_URL)
+    
 
     const fetchCandidates = async({
         page =currentPage,
