@@ -13,6 +13,10 @@ export interface CandidateContextProps {
     total: number;
     pagesize: number;
     loading: boolean;
+    skillIds:string[];
+    developertagIds:string[];
+    levelIds:string[];
+    countryIds:string;
     prevClick: () => void;
     nextClick: () => void;
     setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
@@ -28,6 +32,17 @@ export interface CandidateContextProps {
     setSelectedCountries:React.Dispatch<React.SetStateAction<MultiValue<Selected>>>;
     selectedSkills:MultiValue<Selected>;
     setSelectedSkills:React.Dispatch<React.SetStateAction<MultiValue<Selected>>>;
+    isLogin:boolean;
+    setLogin:React.Dispatch<React.SetStateAction<boolean>>;
+    setLoading:React.Dispatch<React.SetStateAction<boolean>>;
+    setCandidates:React.Dispatch<React.SetStateAction<Candidates[]>>;
+    setTotalPage:React.Dispatch<React.SetStateAction<number>>;
+    setTotal:React.Dispatch<React.SetStateAction<number>>;
+    setPageSize:React.Dispatch<React.SetStateAction<number>>;
+    setTitle:React.Dispatch<React.SetStateAction<Title[]>>;
+    setSkills:React.Dispatch<React.SetStateAction<Skill[]>>;
+    setCountries:React.Dispatch<React.SetStateAction<Countries[]>>;
+    setLevels:React.Dispatch<React.SetStateAction<Levels[]>>;
 }
 
 export interface CandidateProviderProps {
@@ -101,3 +116,9 @@ export interface Selected {
 export interface Ischecked {
     [id:number]:boolean
 }
+
+export interface User {
+    username:string;
+    password:string
+}
+

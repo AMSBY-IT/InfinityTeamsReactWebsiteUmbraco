@@ -1,22 +1,24 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import CandidateList from "./Pages/CandidateList";
-import { CandidateProvider } from "./Provider/CandidateContext";
 import CandidateDetail from "./Pages/CandidateDetail";
+import LoginPage from "./Components/LoginPage";
+import SignupPage from "./Components/SignupPage";
+import Protected from "./Protected";
 
 
 
 const App = () => {
     return (
       <Router>
-        <CandidateProvider>
         <Routes>
           <Route path="/" element={
-            <CandidateList />
+            <Protected><CandidateList /></Protected> 
           } />
-          <Route path="/candidatedetail/:id" element={<CandidateDetail />} />
+          <Route path="/candidatedetail/:id" element={<Protected><CandidateDetail /></Protected>} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
         </Routes>
-        </CandidateProvider>
       </Router>
     );
   };

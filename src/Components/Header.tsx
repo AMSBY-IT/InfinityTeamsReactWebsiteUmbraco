@@ -1,7 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CandidateContext } from "../Provider/CandidateContext";
+import { useNavigate } from "react-router-dom";
 // import { useLocation } from "react-router-dom"
 
 function Header() {
+
+    const data = useContext(CandidateContext);
+        
+    if (!data){
+        return <div>error data is undefined</div>  
+      }
+
+    const {setLogin}=data
+    const navigate = useNavigate()
 
     const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
     // const location = useLocation();
@@ -15,6 +26,12 @@ function Header() {
     };
 
     // const isActive = (path:string) => location.pathname === path;
+
+    const Logout =()=>{
+        localStorage.removeItem("token")
+        setLogin(false)
+        navigate("/login")
+    }
 
     return (
         <>
@@ -31,14 +48,15 @@ function Header() {
                                         </a>
                                     </div>
                                 </div>
-                                {/* <div className="nav-links tw-flex tw-gap-7 tw-text-lg max-md:tw-hidden max-lg:tw-text-base tw-text-gray-800">
+                                <div className="nav-links tw-flex tw-gap-7 tw-text-lg max-md:tw-hidden max-lg:tw-text-base tw-text-gray-800">
+                                <a className={`tw-text-white tw-text-base tw-cursor-pointer`} onClick={Logout}>Logout</a>
 
-                                    <a href="/candidatelist" className={`tw-text-white tw-text-base ${isActive("/candidatelist") ? "tw-opacity-100" : "tw-opacity-50"}`}>Candidate List</a>
+                                    {/* <a href="/candidatelist" className={`tw-text-white tw-text-base ${isActive("/candidatelist") ? "tw-opacity-100" : "tw-opacity-50"}`}>Candidate List</a>
                                     <a href="/services" className={`tw-text-white tw-text-base ${isActive("/services") ? "tw-opacity-100" : "tw-opacity-50"}`}>Services</a>
                                     <a href="/about" className={`tw-text-white tw-text-base ${isActive("/about") ? "tw-opacity-100" : "tw-opacity-50"}`}>About</a>
 
-                                    <a href="/contact" className={`tw-text-white tw-text-base ${isActive("/contact") ? "tw-opacity-100" : "tw-opacity-50"}`}>Contact</a>
-                                </div> */}
+                                    <a href="/contact" className={`tw-text-white tw-text-base ${isActive("/contact") ? "tw-opacity-100" : "tw-opacity-50"}`}>Contact</a> */}
+                                </div>
 
                                 <div className="md:tw-hidden">
                                     <button type="button" onClick={toggleSidebar} id="sidebar-btn">

@@ -26,7 +26,13 @@ export const CandidateProvider: React.FC<CandidateProviderProps>  = ({ children 
     const [selectedTitle,setSelectedTitle]=useState<MultiValue<Selected>>([]);
     const [selectedCountries,setSelectedCountries]=useState<MultiValue<Selected>>([]);
     const [selectedSkills,setSelectedSkills]=useState<MultiValue<Selected>>([])
-    
+    const [isLogin,setLogin]=useState<boolean>(false)
+
+    const token = localStorage.getItem("token");
+        
+    const API_URL = import.meta.env.VITE_API_URL
+    console.log(API_URL)
+
     const fetchCandidates = async({
         page =currentPage,
         limit = 12,
@@ -35,6 +41,12 @@ export const CandidateProvider: React.FC<CandidateProviderProps>  = ({ children 
         levelGuids=levelIds,
         countryGuid=countryIds
     })=>{
+        const token = localStorage.getItem("token");
+        if (!token) {
+            console.error("No token found");
+            return;
+        }
+        
         const requestModel = {
             pageIndex: page,
             pageSize: limit,
@@ -48,13 +60,16 @@ export const CandidateProvider: React.FC<CandidateProviderProps>  = ({ children 
             request: JSON.stringify(requestModel)
         }).toString();
 
-        const url = `https://vaibhavarora2-001-site16.dtempurl.com/umbraco/surface/candidatelist/getcandidates?${queryParams}`
+        const url = `${API_URL}/umbraco/surface/candidatelistsurface/getcandidates?${queryParams}`
 
         setLoading(true)
         
         try{
-            
-            const response= await axios.get(url)
+            const response= await axios.get(url,{
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            })
             const {items,pageIndex,pageSize,totalCount,totalPages}=response.data.data
             setCandidates(items)
             setTotalPage(totalPages)
@@ -68,15 +83,17 @@ export const CandidateProvider: React.FC<CandidateProviderProps>  = ({ children 
         }
     }
     useEffect(()=>{
-        fetchCandidates({
-            page: currentPage,
-            limit: pagesize,
-            skillGuids: skillIds,
-            developerTagGuids: developertagIds,
-            levelGuids: levelIds,
-            countryGuid: countryIds,
-        })
-    },[currentPage,pagesize,skillIds,developertagIds,levelIds,countryIds])
+        if(token){
+            fetchCandidates({
+                page: currentPage,
+                limit: pagesize,
+                skillGuids: skillIds,
+                developerTagGuids: developertagIds,
+                levelGuids: levelIds,
+                countryGuid: countryIds,
+            })
+        }
+    },[currentPage,pagesize,skillIds,developertagIds,levelIds,countryIds,token])
     
     const prevClick = ()=>{
         if(currentPage > 0){
@@ -92,8 +109,18 @@ export const CandidateProvider: React.FC<CandidateProviderProps>  = ({ children 
 
     
     const fetchDeveloperTags = async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            console.error("No token found.");
+            return;
+        }
         try {
-            const response = await axios.get("https://vaibhavarora2-001-site16.dtempurl.com/umbraco/surface/common/getdevelopertags");
+            const response = await axios.get(`${API_URL}/umbraco/surface/common/getdevelopertags`,{
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            }
+            );
             setTitle(response.data.data);
         } catch (err) {
             console.error("Error fetching developer tags:", err);
@@ -101,8 +128,18 @@ export const CandidateProvider: React.FC<CandidateProviderProps>  = ({ children 
     };
 
     const fetchSkills = async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            console.error("No token found");
+            return;
+        }
         try {
-            const response = await axios.get("https://vaibhavarora2-001-site16.dtempurl.com/umbraco/surface/common/getskills");
+            const response = await axios.get(`${API_URL}/umbraco/surface/common/getskills`,{
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            }
+            );
             setSkills(response.data.data);
         } catch (err) {
             console.error("Error fetching skills:", err);
@@ -110,8 +147,18 @@ export const CandidateProvider: React.FC<CandidateProviderProps>  = ({ children 
     };
 
     const fetchCountries = async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            console.error("No token found");
+            return;
+        }
         try {
-            const response = await axios.get("https://vaibhavarora2-001-site16.dtempurl.com/umbraco/surface/common/getcountries");
+            const response = await axios.get(`${API_URL}/umbraco/surface/common/getcountries`,{
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            }
+            );
             setCountries(response.data.data);
         } catch (err) {
             console.error("Error fetching countries:", err);
@@ -119,8 +166,18 @@ export const CandidateProvider: React.FC<CandidateProviderProps>  = ({ children 
     };
 
     const fetchLevels = async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            console.error("No token found");
+            return;
+        }
         try {
-            const response = await axios.get("https://vaibhavarora2-001-site16.dtempurl.com/umbraco/surface/common/getlevels");
+            const response = await axios.get(`${API_URL}/umbraco/surface/common/getlevels`,{
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            }
+            );
             setLevels(response.data.data);
         } catch (err) {
             console.error("Error fetching levels:", err);
@@ -128,12 +185,14 @@ export const CandidateProvider: React.FC<CandidateProviderProps>  = ({ children 
     };
 
    
-    useEffect(() => {
+    useEffect(() => {  
+        if(token){
         fetchDeveloperTags();
         fetchSkills();
         fetchCountries();
-        fetchLevels();
-    }, []);
+        fetchLevels(); 
+        } 
+    }, [token]);
 
     
     return (
@@ -148,6 +207,7 @@ export const CandidateProvider: React.FC<CandidateProviderProps>  = ({ children 
                 totalPage,
                 total,
                 pagesize,
+                skillIds,developertagIds,levelIds,countryIds,
                 prevClick,
                 nextClick,
                 setCurrentPage,
@@ -163,7 +223,19 @@ export const CandidateProvider: React.FC<CandidateProviderProps>  = ({ children 
                 selectedCountries,
                 setSelectedCountries,
                 selectedSkills,
-                setSelectedSkills
+                setSelectedSkills,
+                isLogin,
+                setLogin,
+                setLoading,
+                setCandidates,
+                setTotalPage,
+                setTotal,
+                setPageSize,
+                setTitle,
+                setSkills,
+                setCountries,
+                setLevels
+
             }}
         >
             {children}
