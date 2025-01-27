@@ -1,12 +1,16 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import axios from "axios";
 import { CandidateContext } from "../Provider/CandidateContext";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+
+    const errRef = useRef<HTMLParagraphElement | null>(null);
+
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
+    const [errMsg, setErrMsg] = useState('');
 
     const API_URL = import.meta.env.VITE_API_URL
 
@@ -21,24 +25,36 @@ const LoginPage = () => {
 
             const Login = async () => {
                 if (!username || !password) {
-                    alert("Please enter both email and password.");
+                    setErrMsg("Please enter email and password.");
                     return;
                 }
         
                 setLoading(true);
                 try {
                     const response = await axios.post(
-                        `${API_URL}/api/auth/login`,
+                        `${API_URL}/umbraco/surface/auth/login`,
                         { username, password }
                     );
                     const { token } = response.data;
                     localStorage.setItem("token", token);
                     setLogin(true);
                     navigate("/");
-                } catch (error) {
-                    console.error("Error during login:", error);
-                    alert("Login failed. Please try again.");
-                } finally {
+                } catch (err: unknown) {
+                    if (axios.isAxiosError(err)) {
+                        if (!err.response) {
+                            setErrMsg('No Server Response');
+                        } else if (err.response.status === 400) {
+                            setErrMsg('Missing Username or Password');
+                        } else if (err.response.status === 401) {
+                            setErrMsg('Unauthorized');
+                        } else {
+                            setErrMsg('Login Failed');
+                        }
+                    } else {
+                        setErrMsg('An unexpected error occurred.');
+                    }
+                    errRef.current?.focus();
+                }finally {
                     setLoading(false);
                 }
             };
@@ -76,6 +92,9 @@ const LoginPage = () => {
                     </div>
 
                     <div className="tw-space-y-4">
+                        {errMsg && (
+                            <p ref={errRef} className="tw-text-sm tw-text-red-600" aria-live="assertive">{errMsg}</p>
+                        )}
                         <div>
                             <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">Your Email</label>
                             <input type="email" className="tw-w-full tw-outline-none tw-py-3 tw-px-3 tw-border tw-rounded-md" onChange={(e)=>setUserName(e.target.value)}/>
