@@ -12,14 +12,8 @@ const LoginPage = () => {
   // const [loading, setLoading] = useState(false);
   // const [errMsg, setErrMsg] = useState('');
 
-  const context = useContext(CandidateContext);
 
-    if (!context) {
-        return <p>Error: CandidateContext is not provided!</p>;
-    }
-
-
-  const { dispatch, errorMessage, loading } = context
+  const { dispatch, errorMessage, loading } = useContext(CandidateContext);
 
   const navigate = useNavigate();
 
@@ -42,34 +36,6 @@ const LoginPage = () => {
     },
   });
 
-  // const handleLogin = async () => {
-  //     if (!username || !password) {
-  //         dispatch({ type: "SET_ERROR", payload: "Please enter email and password." });
-  //         return;
-  //     }
-
-  //     dispatch({ type: "SET_LOADING", payload: true });
-
-  //     try {
-  //         const response = await loginUser(username, password);
-  //         localStorage.setItem("token", response.token);
-
-  //         dispatch({ type: "SET_LOGIN", payload: true });
-  //         dispatch({ type: "SET_ERROR", payload: "" });
-
-  //         navigate("/")
-  //     } catch (err) {
-  //         let errorMsg = "Login Failed";
-  //         if (axios.isAxiosError(err)) {
-  //             if (!err.response) errorMsg = "No Server Response";
-  //             else if (err.response.status === 400) errorMsg = "Missing Username or Password";
-  //             else if (err.response.status === 401) errorMsg = "Unauthorized";
-  //         }
-  //         dispatch({ type: "SET_ERROR", payload: errorMsg });
-  //     } finally {
-  //         dispatch({ type: "SET_LOADING", payload: false });
-  //     }
-  // };
 
   return (
     <>
