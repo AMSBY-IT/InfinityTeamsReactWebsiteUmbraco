@@ -21,7 +21,15 @@ export type Action =
   | { type: 'SET_COUNTRY'; payload: Countries[] }
   | { type: 'SET_LEVEL'; payload: Levels[] }
   | { type: 'SET_CANDIDATES'; payload: Candidates[] }
-  | { type: 'SET_CHECKED'; payload: { id: string; checked: boolean } };
+  | { type: 'SET_CHECKED'; payload: { id: string; checked: boolean } }
+  | { type: 'SET_FILTERS'; payload: { titles: string[]; 
+    skills: string[]; 
+    countries: string[]; 
+    levels:string[];
+    pageIndex:number;
+    pageSize:number;
+  minYearsOfExperience: number | null;
+        maxYearsOfExperience: number| null; }};
 
 
 
@@ -53,6 +61,11 @@ const Reducer = (state: typeof initialState, action: Action) => {
           ...state.isChecked,
           [action.payload.id]: action.payload.checked,
         },
+      };
+      case 'SET_FILTERS':
+      return { 
+        ...state, 
+        filters: action.payload 
       };
     default:
       return state;

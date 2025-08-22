@@ -15,6 +15,16 @@ export interface CandidateContextProps {
     errorMessage:string;
     token:string;
     dispatch: Dispatch<Action>;
+    filters: {
+        titles: string[];
+    skills: string[];
+    countries: string[];
+    levels: string[],
+    pageIndex: number;
+    pageSize: number;
+    minYearsOfExperience: number | null;
+  maxYearsOfExperience: number | null;
+    }
 }
 
 export interface CandidateProviderProps {
@@ -33,21 +43,25 @@ export interface FetchCandidatesParams {
 export interface Title {
     id: string;
     name: string
+    guid: string;
 }
 
 export interface Skill {
     id: string;
     name: string
+    guid: string;
 }
 
 export interface Countries {
     id: string;
     name: string
+    guid: string;
 }
 
 export interface Levels {
     id: string;
     name: string
+    guid: string;
 }
 
 export interface Candidates {
@@ -78,7 +92,7 @@ export interface Candidates {
     // contactNumber:string;
     // country:string;
     // currentCompanyName:string;
-    // currentMostRecentJobTitle:string;
+    currentMostRecentJobTitle:string;
     // cvUrl:string;
     // ectc:number;
     // emailAddress:string;
@@ -90,7 +104,7 @@ export interface Candidates {
     // lastName:string;
     // locationCity:string;
     // sector:string;
-    // skills:string[];
+    skills:string[];
     // totalYearsOfExperience:string
 }
 

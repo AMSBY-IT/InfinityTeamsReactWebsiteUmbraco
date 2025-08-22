@@ -4,6 +4,7 @@ import CandidateList from "./Pages/CandidateList";
 import LoginPage from "./Components/LoginPage";
 import SignupPage from "./Components/SignupPage";
 import Protected from "./Protected";
+import CandidateDetail from "./Pages/CandidateDetail";
 
 
 
@@ -17,6 +18,7 @@ const App = () => {
           } />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/detail" element={<CandidateDetail />} />
         </Routes>
       </Router>
     );

@@ -20,7 +20,17 @@ export const initialState = {
   levels: [] as Levels[],
   candidates: [] as Candidates[],
   isChecked: {} as Record<string, boolean>,
-  dispatch: ()=>{}
+  dispatch: ()=>{},
+  filters: {
+    titles: [] as string[],
+    skills: [] as string[],
+    countries: [] as string[],
+    levels: [] as string[],
+    pageIndex: 1,
+    pageSize: 10,
+    minYearsOfExperience: null,
+    maxYearsOfExperience: null
+  }
 };
 
 export const CandidateContext = createContext<

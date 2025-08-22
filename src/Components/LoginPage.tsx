@@ -1,19 +1,21 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { CandidateContext } from "../Provider/CandidateContext";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { loginUser } from "../api/services";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AxiosError } from "axios";
 
 const LoginPage = () => {
-  const errRef = useRef<HTMLParagraphElement | null>(null);
+
 
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  // const [loading, setLoading] = useState(false);
-  // const [errMsg, setErrMsg] = useState('');
+  
 
 
-  const { dispatch, errorMessage, loading } = useContext(CandidateContext);
+  const { dispatch, loading } = useContext(CandidateContext);
 
   const navigate = useNavigate();
 
@@ -29,11 +31,16 @@ const LoginPage = () => {
       localStorage.setItem("token", data.token);
       dispatch({ type: "SET_LOGIN", payload: true });
       dispatch({ type: "SET_LOADING", payload: true })
+      toast.success("Login successful!");
       navigate("/");
     },
-    onError: (error) => {
-      dispatch({ type: "SET_ERROR", payload: error.message });
-    },
+    onError: (error: AxiosError<{ message: string }>) => {
+  let errorMessage = "Login failed. Please try again.";
+  if (error.response?.data?.message) {
+    errorMessage = error.response.data.message;
+  }
+  toast.error(errorMessage);
+},
   });
 
 
@@ -49,7 +56,7 @@ const LoginPage = () => {
               </button>
             </div>
 
-            <div className="tw-text-center tw-text-gray-500 tw-mb-6">
+            {/* <div className="tw-text-center tw-text-gray-500 tw-mb-6">
               <div className="tw-relative">
                 <div className="tw-absolute tw-inset-0 tw-flex tw-items-center">
                   <div className="tw-w-full tw-border-t tw-border-gray-200"></div>
@@ -69,18 +76,9 @@ const LoginPage = () => {
               <button className="tw-bg-gray-100 tw-py-3 tw-px-7 tw-rounded-md tw-text-gray-600">
                 Employer
               </button>
-            </div>
+            </div> */}
 
             <div className="tw-space-y-4">
-              {errorMessage && (
-                <p
-                  ref={errRef}
-                  className="tw-text-sm tw-text-red-600"
-                  aria-live="assertive"
-                >
-                  {errorMessage}
-                </p>
-              )}
               <div>
                 <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">
                   Your Email
@@ -113,12 +111,12 @@ const LoginPage = () => {
                     Remember me
                   </label>
                 </div>
-                <a
+                {/* <a
                   href="#"
                   className="tw-text-sm tw-text-gray-500 hover:tw-text-gray-700"
                 >
                   Forgot Password?
-                </a>
+                </a> */}
               </div>
 
               <button
@@ -129,7 +127,7 @@ const LoginPage = () => {
                 {loading ? "Logging in..." : "Login"}
               </button>
 
-              <div className="tw-relative tw-my-6">
+              {/* <div className="tw-relative tw-my-6">
                 <div className="tw-absolute tw-inset-0 tw-flex tw-items-center">
                   <div className="tw-w-full tw-border-t tw-border-gray-200"></div>
                 </div>
@@ -144,7 +142,7 @@ const LoginPage = () => {
                 <a href="/signup" className="tw-text-[#6039C8] tw-ml-1">
                   Sign Up
                 </a>
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

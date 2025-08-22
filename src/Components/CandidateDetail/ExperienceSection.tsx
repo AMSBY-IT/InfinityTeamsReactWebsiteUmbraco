@@ -1,25 +1,87 @@
-import { useLocation } from "react-router-dom";
-
-
-
-
 const ExperienceSection = () => {
-    const location = useLocation();
-    const candidate = location.state?.candidate;
     return (
-        <div id="experience" className="tw-mb-7">
-            <h6 className="tw-text-2xl max-sm:tw-text-xl tw-font-semibold tw-mb-5 tw-capitalize">experience</h6>
-            <ul className="timeline">
-                <li className="tw-mb-7 tw-pl-7 tw-relative">
-                    <div className="tw-w-3 tw-h-3 tw-bg-untitled-ui--primary600 tw-rounded-full tw-absolute tw-left-0 tw-top-2 tw-z-10"></div>
-                    <span className="timeline__title tw-block tw-mb-1 tw-text-untitled-ui--primary600 tw-text-lg tw-font-medium">{candidate.currentMostRecentJobTitle}</span>
-                    <span className="timeline__subtitle tw-block tw-text-[#7D8087] tw-italic tw-text-base">Reactheme   (2016- Present)</span>
-                    <p className="tw-mt-2 fw-medium tw-text-lg tw-text-[#7D8087]">Software engineers&nbsp;apply engineering principles and knowledge of programming languages to build software solutions for end users.</p>
-                    <div className="vertical-line tw-absolute tw-h-[110%] tw-w-[1px] tw-bg-black tw-opacity-20 tw-top-3 tw-left-[5px] tw-z-0"></div>
-                </li>
-            </ul>
+        <div className="tw-mb-8">
+            <h2 className="tw-text-xl tw-font-semibold tw-mb-6">Work experience</h2>
+
+            <div className="tw-space-y-6">
+                {/* Crisis Intervention Specialist */}
+                <div className="tw-flex tw-gap-4">
+                    <div className="tw-flex-shrink-0 tw-w-12 tw-h-12 tw-bg-pink-500 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-text-white">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="tw-h-6 tw-w-6"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        >
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <div className="tw-flex-grow">
+                        <h3 className="tw-text-lg tw-font-semibold tw-text-gray-900">Crisis Intervention Specialist</h3>
+                        <div className="tw-flex tw-justify-between">
+                            <p className="tw-text-gray-700">London • Dribble Inc.</p>
+                            <p className="tw-text-gray-700">2018 - Present</p>
+                        </div>
+                        <p className="tw-text-gray-500 tw-mt-1">
+                            Minimum 3 shifts a week Monday - Friday with the ability to work an 8 to 9 hour time each week between
+                            the hours of 7 A.M. - 7 P.M.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Virtual Scheduler */}
+                <div className="tw-flex tw-gap-4">
+                    <div className="tw-flex-shrink-0 tw-w-12 tw-h-12 tw-bg-white tw-rounded-full tw-flex tw-items-center tw-justify-center tw-border tw-border-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="tw-h-6 tw-w-6" viewBox="0 0 24 24" fill="none">
+                            <path d="M2.5 10.5H21.5" stroke="#4285F4" strokeWidth="2" />
+                            <path d="M7 3.5H17" stroke="#EA4335" strokeWidth="2" />
+                            <path d="M4 7.5H20" stroke="#FBBC05" strokeWidth="2" />
+                            <path d="M4 13.5H20" stroke="#34A853" strokeWidth="2" />
+                            <path d="M7 16.5H17" stroke="#4285F4" strokeWidth="2" />
+                            <path d="M9 19.5H15" stroke="#EA4335" strokeWidth="2" />
+                        </svg>
+                    </div>
+                    <div className="tw-flex-grow">
+                        <h3 className="tw-text-lg tw-font-semibold tw-text-gray-900">Virtual Scheduler</h3>
+                        <div className="tw-flex tw-justify-between">
+                            <p className="tw-text-gray-700">London • Google Inc.</p>
+                            <p className="tw-text-gray-700">2001 - 2018</p>
+                        </div>
+                        <p className="tw-text-gray-500 tw-mt-1">
+                            Lines for Life also offers a great benefits package valued at over $9,500 that includes full coverage
+                            for employee health, dental, vision, short
+                        </p>
+                    </div>
+                </div>
+
+                {/* Patient Care Advocate */}
+                <div className="tw-flex tw-gap-4">
+                    <div className="tw-flex-shrink-0 tw-w-12 tw-h-12 tw-bg-blue-600 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="tw-h-6 tw-w-6" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </div>
+                    <div className="tw-flex-grow">
+                        <h3 className="tw-text-lg tw-font-semibold tw-text-gray-900">Patient Care Advocate</h3>
+                        <div className="tw-flex tw-justify-between">
+                            <p className="tw-text-gray-700">London • Facebook Inc.</p>
+                            <p className="tw-text-gray-700">1998 - 2018</p>
+                        </div>
+                        <p className="tw-text-gray-500 tw-mt-1">
+                            Healthcare Interest — become an expert on emerging healthcare programs and excited to speak with
+                            providers
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    )
-}
+    );
+};
 
 export default ExperienceSection;
