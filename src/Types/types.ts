@@ -15,8 +15,11 @@ export interface CandidateContextProps {
     errorMessage:string;
     token:string;
     dispatch: Dispatch<Action>;
-    filters: {
-        titles: string[];
+    filters: Filters
+}
+
+export interface Filters {
+    titles: string[];
     skills: string[];
     countries: string[];
     levels: string[],
@@ -24,9 +27,6 @@ export interface CandidateContextProps {
     pageSize: number;
     minYearsOfExperience: number | null;
   maxYearsOfExperience: number | null;
-    }
-
-    
 }
 
 export interface CandidateProviderProps {

@@ -29,7 +29,8 @@ export type Action =
     pageIndex:number;
     pageSize:number;
   minYearsOfExperience: number | null;
-        maxYearsOfExperience: number| null; }};
+        maxYearsOfExperience: number| null; 
+      }};
 
 
 

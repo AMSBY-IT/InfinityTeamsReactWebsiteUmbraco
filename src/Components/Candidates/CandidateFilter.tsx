@@ -8,9 +8,9 @@ import { fetchcountries, fetchskills, fetchTitle } from "../../api/services"
 
 export const CandidateFilter = () => {
     const {dispatch, title, skills, countries, filters} = useContext(CandidateContext);
-    const [selectedTitle, setSelectedTitle] = useState<Selected[]>([]);
-    const [selectedSkills, setSelectedSkills] = useState<Selected[]>([]);
-    const [selectedCountries, setSelectedCountries] = useState<Selected[]>([]);
+    const [selectedTitle, setSelectedTitle] = useState<MultiValue<Selected>>([]);
+    const [selectedSkills, setSelectedSkills] = useState<MultiValue<Selected>>([]);
+    const [selectedCountries, setSelectedCountries] = useState<MultiValue<Selected>>([]);
 
     const { data:titleData } = useQuery({queryKey:['title'], queryFn:()=>fetchTitle()});
     const { data:skillData } = useQuery({queryKey:['skill'], queryFn:()=>fetchskills()});
@@ -67,7 +67,7 @@ export const CandidateFilter = () => {
         setSelectedCountries(countryOptions.filter(option => filters.countries.includes(option.guid)));
     }, [filters.titles, filters.skills, filters.countries, title, skills, countries]);
 
-    const handleSelectChange = (selected: any, type: string) => {
+    const handleSelectChange = (selected: MultiValue<Selected>, type: string) => {
         if (type === "titles") {
             setSelectedTitle(selected || []);
             const titleGuids = selected ? selected.map((option: Selected) => option.guid) : [];

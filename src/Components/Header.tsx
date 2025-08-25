@@ -1,15 +1,11 @@
-import { useContext, useState } from "react";
-import { CandidateContext } from "../Provider/CandidateContext";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { getAuthToken, logOutUser } from "../api/services";
 // import { useLocation } from "react-router-dom"
 
 const Header=()=> {
     
 
-    const {dispatch} = useContext(CandidateContext);
-        
     
-    const navigate = useNavigate()
 
     const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
     // const location = useLocation();
@@ -25,9 +21,10 @@ const Header=()=> {
     // const isActive = (path:string) => location.pathname === path;
 
     const Logout =()=>{
-        localStorage.removeItem("token")
-        dispatch({ type: "SET_LOGIN", payload: false })
-        navigate("/login")
+        const token=getAuthToken()
+        if (!token) return;
+        logOutUser(token)
+
     }
 
     return (

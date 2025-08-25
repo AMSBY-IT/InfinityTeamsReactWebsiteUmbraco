@@ -1,4 +1,15 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+import { Filters } from "../Types/types";
+
+export const getAuthToken = (): string | null => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        toast.error("No token found.");
+        return null;
+    }
+    return token;
+};
 
 export const loginUser = async (username: string, password: string) => {
         const response = await axios.post(`https://vaibhavarora2-001-site16.dtempurl.com/api/auth/login`, { username, password });
@@ -6,48 +17,71 @@ export const loginUser = async (username: string, password: string) => {
     
 };
 
+export const logOutUser = async (user:string) => {
+  const token = getAuthToken();
+    if (!token) return;
+        const response = await axios.post(`https://vaibhavarora2-001-site16.dtempurl.com/api/auth/logout`, { "token":user },{
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        if(!response.data){
+          toast.error("something went wrong")
+          return
+        }
 
-// export const fetchCandidates = async(requestModel:any)=>{
-//         const token = localStorage.getItem("token");
-//         if (!token) {
-//             console.error("No token found");
-//             return;
-//         }
-        
-        
+        localStorage.removeItem('token');
+        window.location.reload();
+        return response.data;
+    
+};
 
-//         const queryParams = new URLSearchParams({
-//             request: JSON.stringify(requestModel)
-//         }).toString();
+const apiGet = async (url: string) => {
+    const token = getAuthToken();
+    if (!token) return;
 
-//         const url = `${API_URL}/umbraco/surface/candidatelistsurface/getcandidates?${queryParams}`
+    try {
+        const response = await axios.get(url, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data.data;
+    } catch (error) {
+        toast.error(`Error fetching ${url}: ${error instanceof Error ? error.message : 'Unknown error'}`);
+        throw error;
+    }
+};
+
+export const fetchTitle = () => apiGet("https://vaibhavarora2-001-site16.dtempurl.com/api/common/developer-tags");
+export const fetchskills = () => apiGet("https://vaibhavarora2-001-site16.dtempurl.com/api/common/skills");
+export const fetchcountries = () => apiGet("https://vaibhavarora2-001-site16.dtempurl.com/api/common/countries");
+export const fetchlevels = () => apiGet("https://vaibhavarora2-001-site16.dtempurl.com/api/common/levels");
 
 
-        
-//         try{
-//             const response= await axios.get(url
-//                 ,{
-//                 headers:{
-//                     Authorization: `Bearer ${token}`
-//                 }
-//             }
-//         )
-//         return response.data.data
-            
-//         }catch(err){
-//             throw(err)
-//         }
+// export const fetchTitle = async () => {
+//     const token = getAuthToken;
+//     if (!token) {
+//         console.error("No token found fetchtitle.");
+//         return;
 //     }
+//         const response = await axios.get(`https://vaibhavarora2-001-site16.dtempurl.com/api/common/developer-tags`
+//             ,{
+//             headers:{
+//                 Authorization: `Bearer ${token}`
+//             }
+//         }
+//         );
+//         return response.data.data;
+// };
 
-
-// export const fetchDeveloperTags = async () => {
-//     const token = localStorage.getItem("token");
+// export const fetchskills = async () => {
+//     const token = getAuthToken;
 //     if (!token) {
 //         console.error("No token found.");
 //         return;
 //     }
-//     try {
-//         const response = await axios.get(`${API_URL}/umbraco/surface/common/getdevelopertags`
+//         const response = await axios.get(`https://vaibhavarora2-001-site16.dtempurl.com/api/common/skills`
 //             ,{
 //             headers:{
 //                 Authorization: `Bearer ${token}`
@@ -55,19 +89,15 @@ export const loginUser = async (username: string, password: string) => {
 //         }
 //         );
 //         return response.data.data;
-//     } catch (err) {
-//         throw(err)
-//     }
 // };
 
-// export const fetchSkills = async () => {
-//     const token = localStorage.getItem("token");
+// export const fetchcountries = async () => {
+//     const token = getAuthToken;
 //     if (!token) {
-//         console.error("No token found");
+//         console.error("No token found.");
 //         return;
 //     }
-//     try {
-//         const response = await axios.get(`${API_URL}/umbraco/surface/common/getskills`
+//         const response = await axios.get(`https://vaibhavarora2-001-site16.dtempurl.com/api/common/countries`
 //             ,{
 //             headers:{
 //                 Authorization: `Bearer ${token}`
@@ -75,19 +105,15 @@ export const loginUser = async (username: string, password: string) => {
 //         }
 //         );
 //         return response.data.data;
-//     } catch (err) {
-//         throw(err)
-//     }
 // };
 
-// export const fetchCountries = async () => {
-//     const token = localStorage.getItem("token");
+// export const fetchlevels = async () => {
+//     const token = getAuthToken;
 //     if (!token) {
-//         console.error("No token found");
+//         console.error("No token found.");
 //         return;
 //     }
-//     try {
-//         const response = await axios.get(`${API_URL}/umbraco/surface/common/getcountries`
+//         const response = await axios.get(`https://vaibhavarora2-001-site16.dtempurl.com/api/common/levels`
 //             ,{
 //             headers:{
 //                 Authorization: `Bearer ${token}`
@@ -95,102 +121,13 @@ export const loginUser = async (username: string, password: string) => {
 //         }
 //         );
 //         return response.data.data;
-//     } catch (err) {
-//         throw(err)
-//     }
 // };
 
-// export const fetchLevels = async () => {
-//     const token = localStorage.getItem("token");
-//     if (!token) {
-//         console.error("No token found");
-//         return;
-//     }
-//     try {
-//         const response = await axios.get(`${API_URL}/umbraco/surface/common/getlevels`
-//             ,{
-//             headers:{
-//                 Authorization: `Bearer ${token}`
-//             }
-//         }
-//         );
-//         return response.data.data;
-//     } catch (err) {
-//         throw(err)
-//     }
-// };
 
-export const fetchTitle = async () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-        console.error("No token found fetchtitle.");
-        return;
-    }
-        const response = await axios.get(`https://vaibhavarora2-001-site16.dtempurl.com/api/common/developer-tags`
-            ,{
-            headers:{
-                Authorization: `Bearer ${token}`
-            }
-        }
-        );
-        return response.data.data;
-};
-
-export const fetchskills = async () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-        console.error("No token found.");
-        return;
-    }
-        const response = await axios.get(`https://vaibhavarora2-001-site16.dtempurl.com/api/common/skills`
-            ,{
-            headers:{
-                Authorization: `Bearer ${token}`
-            }
-        }
-        );
-        return response.data.data;
-};
-
-export const fetchcountries = async () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-        console.error("No token found.");
-        return;
-    }
-        const response = await axios.get(`https://vaibhavarora2-001-site16.dtempurl.com/api/common/countries`
-            ,{
-            headers:{
-                Authorization: `Bearer ${token}`
-            }
-        }
-        );
-        return response.data.data;
-};
-
-export const fetchlevels = async () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-        console.error("No token found.");
-        return;
-    }
-        const response = await axios.get(`https://vaibhavarora2-001-site16.dtempurl.com/api/common/levels`
-            ,{
-            headers:{
-                Authorization: `Bearer ${token}`
-            }
-        }
-        );
-        return response.data.data;
-};
-
-
-export const candidateFetch = async (filters: any) => {
-  const token = localStorage.getItem("token");
-  if (!token) {
-    console.error("No token found.");
-    return;
-  }
+export const candidateFetch = async (filters:Filters) => {
+  const token = getAuthToken();
+  if (!token) return;
+  
   // Build query parameters according to API format
   const params = new URLSearchParams();
   
@@ -234,15 +171,16 @@ export const candidateFetch = async (filters: any) => {
   }
 
   const url = `https://vaibhavarora2-001-site16.dtempurl.com/api/candidateslist?${params.toString()}`;
-  
-  try {
+
     const response = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     });
+
+    if(!response.data){
+      return
+    }
     return response.data.data;
-  } catch(err) {
-    throw(err);
-  }
+   
 };

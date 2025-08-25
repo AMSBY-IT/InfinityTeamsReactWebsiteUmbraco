@@ -22,7 +22,7 @@ export default function MinimumDistanceSlider() {
         ]);
     }, [filters.minYearsOfExperience, filters.maxYearsOfExperience]);
 
-  const handleChange = (event: Event, newValue: number[], activeThumb: number) => {
+  const handleChange = (_: Event, newValue: number[], activeThumb: number) => {
     if (activeThumb === 0) {
       setValue([Math.min(newValue[0], value[1] - minDistance), value[1]]);
     } else {
@@ -30,7 +30,7 @@ export default function MinimumDistanceSlider() {
     }
   };
 
-  const handleChangeCommitted = (event: Event | React.SyntheticEvent, newValue: number[]) => {
+  const handleChangeCommitted = (_: Event | React.SyntheticEvent, newValue: number[]) => {
     
     // Check if values are at default (user hasn't changed from initial state)
     const isMinDefault = newValue[0] === DEFAULT_MIN;

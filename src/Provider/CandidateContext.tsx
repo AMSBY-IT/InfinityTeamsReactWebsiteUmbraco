@@ -28,8 +28,8 @@ export const initialState = {
     levels: [] as string[],
     pageIndex: 1,
     pageSize: 10,
-    minYearsOfExperience: null,
-    maxYearsOfExperience: null
+    minYearsOfExperience: null as number | null,
+    maxYearsOfExperience: null as number | null
   }
 };
 

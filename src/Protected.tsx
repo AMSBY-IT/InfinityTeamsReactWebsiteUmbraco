@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import { Navigate } from 'react-router-dom';
+import { getAuthToken } from './api/services';
 
 interface ProtectedProps {
   children: ReactNode;
@@ -9,7 +10,7 @@ interface ProtectedProps {
 const Protected = ({ children }: ProtectedProps) => {
 
 
-  const isAuth = localStorage.getItem('token');
+  const isAuth = getAuthToken();
 
   return isAuth ? children : <Navigate to='/login' />;
 };
