@@ -25,6 +25,8 @@ export interface CandidateContextProps {
     minYearsOfExperience: number | null;
   maxYearsOfExperience: number | null;
     }
+
+    
 }
 
 export interface CandidateProviderProps {
