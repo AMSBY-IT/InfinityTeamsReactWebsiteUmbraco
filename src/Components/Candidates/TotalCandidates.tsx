@@ -30,7 +30,7 @@ dispatch({
         <div className="top__query tw-mb-4 tw-flex tw-flex-wrap tw-gap-4 tw-justify-between tw-items-center">
             <div id="resultText" className="tw-text-[#242121] tw-text-2xl tw-font-medium"><span className="tw-font-bold tw-text-untitled-ui--gray800"></span>Candidates</div>
             <div onClick={clearFilters} className="tw-cursor-pointer">
-                <span className="tw-text-sm sm:tw-text-base tw-font-normal">
+                <span className="tw-text-sm tw-font-normal tw-px-3 tw-py-2 tw-bg-[#9c97a7] tw-rounded-md">
                     Clear filters
                 </span>
             </div>

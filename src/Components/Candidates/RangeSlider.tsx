@@ -47,8 +47,11 @@ export default function MinimumDistanceSlider() {
   };
 
   return (
-    <div className='tw-w-full tw-pt-5 tw-flex tw-items-center tw-justify-center'>
-      <div className='tw-w-4/5'>
+    <div className='tw-w-full tw-pt-5 tw-flex tw-items-center tw-flex-col tw-justify-center'>
+      <div className='tw-flex tw-justify-start tw-items-center tw-pb-1 tw-w-full tw-capitalize tw-text-lg tw-font-medium tw-cursor-pointer tw-text-[#242121]'>
+        Experience in Years
+      </div>
+      <div className='tw-w-4/5 tw-pt-3'>
         <Slider
         getAriaLabel={() => 'Minimum distance'}
         value={value}
@@ -62,8 +65,8 @@ export default function MinimumDistanceSlider() {
       />
 
       <div className="tw-flex tw-justify-between tw-mt-2 tw-text-sm tw-text-gray-600">
-        <span>Min:{value[0]}</span>
-        <span>Max:{value[1]}</span>
+        <span>Min years:{value[0]}</span>
+        <span>Max years:{value[1]}</span>
       </div>
       </div>
     </div>

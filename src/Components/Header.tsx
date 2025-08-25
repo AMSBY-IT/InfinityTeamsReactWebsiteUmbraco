@@ -29,7 +29,7 @@ const Header=()=> {
 
     return (
         <>
-            <div className="tw-bg-untitled-ui--primary600">
+            <div className="tw-bg-[#f4f5fa] tw-border-b-[#dbd5d3] tw-border-b">
                 <div className="tw-max-w-7xl tw-mx-auto max-xl:tw-max-w-5xl">
                     <header className=" tw-bg-transparent  tw-py-4" id="navbar">
                         <div className="tw-mx-auto max-sm:tw-w-11/12 max-lg:tw-w-11/12">
@@ -43,7 +43,7 @@ const Header=()=> {
                                     </div>
                                 </div>
                                 <div className="nav-links tw-flex tw-gap-7 tw-text-lg max-md:tw-hidden max-lg:tw-text-base tw-text-gray-800">
-                                <a className={`tw-text-white tw-text-base tw-cursor-pointer`} onClick={Logout}>Logout</a>
+                                <a className={`tw-text-black tw-text-sm tw-cursor-pointer tw-px-3 tw-py-2 tw-bg-[#9c97a7] tw-rounded-md`} onClick={Logout}>Logout</a>
 
                                     {/* <a href="/candidatelist" className={`tw-text-white tw-text-base ${isActive("/candidatelist") ? "tw-opacity-100" : "tw-opacity-50"}`}>Candidate List</a>
                                     <a href="/services" className={`tw-text-white tw-text-base ${isActive("/services") ? "tw-opacity-100" : "tw-opacity-50"}`}>Services</a>
@@ -54,7 +54,7 @@ const Header=()=> {
 
                                 <div className="md:tw-hidden">
                                     <button type="button" onClick={toggleSidebar} id="sidebar-btn">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="tw-w-6" viewBox="0 0 24 24"><path fill="#fff" d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z" /></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#000" d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"/></svg>
                                     </button>
                                 </div>
                             </nav>

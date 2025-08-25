@@ -39,7 +39,7 @@ const CandidateCard = () => {
 
                                 {candidate.skills && candidate.skills.length > 0 ? candidate.skills.slice(0, 3).map((skill) => (
                                     <a className="tw-px-3 tw-py-2 tw-rounded-[4px] tw-whitespace-wrap tw-bg-untitled-ui--primary600 tw-flex tw-leading-4 tw-capitalize tw-text-untitled-ui--primary100 tw-text-[14px]">{skill}</a>))
-                                    : <span>No skills listed</span>
+                                    : <span></span>
                                 }
 
 
