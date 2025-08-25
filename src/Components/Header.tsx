@@ -38,12 +38,12 @@ const Header=()=> {
                                     <div className="tw-mr-2">
                                         <a href="/">
                                             <img src="https://infinity.devcodefire.com/wp-content/uploads/2024/10/infinityteam.png"
-                                                className="tw-h-14 " alt="" />
+                                                className="tw-h-16 " alt="" />
                                         </a>
                                     </div>
                                 </div>
                                 <div className="nav-links tw-flex tw-gap-7 tw-text-lg max-md:tw-hidden max-lg:tw-text-base tw-text-gray-800">
-                                <a className={`tw-text-black tw-text-sm tw-cursor-pointer tw-px-3 tw-py-2 tw-bg-[#9c97a7] tw-rounded-md`} onClick={Logout}>Logout</a>
+                                <a className={`tw-text-black tw-text-sm tw-cursor-pointer tw-px-3 tw-py-2 tw-bg-[#dddd] tw-rounded-md`} onClick={Logout}>Logout</a>
 
                                     {/* <a href="/candidatelist" className={`tw-text-white tw-text-base ${isActive("/candidatelist") ? "tw-opacity-100" : "tw-opacity-50"}`}>Candidate List</a>
                                     <a href="/services" className={`tw-text-white tw-text-base ${isActive("/services") ? "tw-opacity-100" : "tw-opacity-50"}`}>Services</a>

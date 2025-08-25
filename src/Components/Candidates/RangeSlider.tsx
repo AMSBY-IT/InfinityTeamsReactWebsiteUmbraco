@@ -65,8 +65,8 @@ export default function MinimumDistanceSlider() {
       />
 
       <div className="tw-flex tw-justify-between tw-mt-2 tw-text-sm tw-text-gray-600">
-        <span>Min years:{value[0]}</span>
-        <span>Max years:{value[1]}</span>
+        <span>Min years: {value[0]}</span>
+        <span>Max years: {value[1]}</span>
       </div>
       </div>
     </div>

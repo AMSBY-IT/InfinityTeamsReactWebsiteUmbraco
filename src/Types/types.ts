@@ -107,7 +107,7 @@ export interface Candidates {
     // locationCity:string;
     // sector:string;
     skills:string[];
-    // totalYearsOfExperience:string
+    totalYearsOfExperience:string
 }
 
 
