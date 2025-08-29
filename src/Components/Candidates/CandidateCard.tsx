@@ -1,13 +1,23 @@
 import { useContext } from "react";
 import { CandidateContext } from "../../Provider/CandidateContext";
 import {Candidates} from "../../Types/types"
+import { useNavigate } from "react-router-dom";
+import { getCandidateById } from "../../api/services";
 
 
 
 const CandidateCard = () => {
 
    
-    const {candidates} = useContext(CandidateContext);
+    const {candidates,dispatch} = useContext(CandidateContext);
+    const navigate = useNavigate();
+
+    const handleCandidateClick = async (id:number)=>{
+
+        const data = await getCandidateById(id);
+        dispatch({ type: "SET_CANDIDATEBYID", payload: data })
+        navigate(`/detail/${id}`);
+    }
 
     
     return (
@@ -16,7 +26,7 @@ const CandidateCard = () => {
                 {candidates.map((candidate:Candidates) => (
 
                     <div className="tw-flex" key={candidate.id}>
-                        <div className="tw-flex tw-flex-1 tw-flex-col rts__job__card tw-p-4 tw-border-[1px] tw-bg-white tw-border-[#dcdddf] tw-rounded-md tw-cursor-pointer hover:tw-bg-hover-gradient">
+                        <div onClick={() => handleCandidateClick(candidate.id)} className="tw-flex tw-flex-1 tw-flex-col rts__job__card tw-p-4 tw-border-[1px] tw-bg-white tw-border-[#dcdddf] tw-rounded-md tw-cursor-pointer hover:tw-bg-hover-gradient">
                             <div className="tw-flex tw-gap-4">
                                 <div className="tw-flex">
                                     <img src={`https://ui-avatars.com/api/?name=${candidate.firstName}+${candidate.lastName}`} alt="" className="tw-w-[60px] tw-h-[60px] tw-rounded-sm" />

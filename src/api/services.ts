@@ -5,7 +5,7 @@ import { Filters } from "../Types/types";
 export const getAuthToken = (): string | null => {
     const token = localStorage.getItem("token");
     if (!token) {
-        toast.error("No token found.");
+        console.error("No token found.");
         return null;
     }
     return token;
@@ -48,7 +48,7 @@ const apiGet = async (url: string) => {
         });
         return response.data.data;
     } catch (error) {
-        toast.error(`Error fetching ${url}: ${error instanceof Error ? error.message : 'Unknown error'}`);
+
         throw error;
     }
 };
@@ -59,69 +59,7 @@ export const fetchcountries = () => apiGet("https://vaibhavarora2-001-site16.dte
 export const fetchlevels = () => apiGet("https://vaibhavarora2-001-site16.dtempurl.com/api/common/levels");
 
 
-// export const fetchTitle = async () => {
-//     const token = getAuthToken;
-//     if (!token) {
-//         console.error("No token found fetchtitle.");
-//         return;
-//     }
-//         const response = await axios.get(`https://vaibhavarora2-001-site16.dtempurl.com/api/common/developer-tags`
-//             ,{
-//             headers:{
-//                 Authorization: `Bearer ${token}`
-//             }
-//         }
-//         );
-//         return response.data.data;
-// };
 
-// export const fetchskills = async () => {
-//     const token = getAuthToken;
-//     if (!token) {
-//         console.error("No token found.");
-//         return;
-//     }
-//         const response = await axios.get(`https://vaibhavarora2-001-site16.dtempurl.com/api/common/skills`
-//             ,{
-//             headers:{
-//                 Authorization: `Bearer ${token}`
-//             }
-//         }
-//         );
-//         return response.data.data;
-// };
-
-// export const fetchcountries = async () => {
-//     const token = getAuthToken;
-//     if (!token) {
-//         console.error("No token found.");
-//         return;
-//     }
-//         const response = await axios.get(`https://vaibhavarora2-001-site16.dtempurl.com/api/common/countries`
-//             ,{
-//             headers:{
-//                 Authorization: `Bearer ${token}`
-//             }
-//         }
-//         );
-//         return response.data.data;
-// };
-
-// export const fetchlevels = async () => {
-//     const token = getAuthToken;
-//     if (!token) {
-//         console.error("No token found.");
-//         return;
-//     }
-//         const response = await axios.get(`https://vaibhavarora2-001-site16.dtempurl.com/api/common/levels`
-//             ,{
-//             headers:{
-//                 Authorization: `Bearer ${token}`
-//             }
-//         }
-//         );
-//         return response.data.data;
-// };
 
 
 export const candidateFetch = async (filters:Filters) => {
@@ -184,3 +122,20 @@ export const candidateFetch = async (filters:Filters) => {
     return response.data.data;
    
 };
+
+export const getCandidateById = async (id: number)=>{
+  const token = getAuthToken();
+  if (!token) return;
+  try {
+            
+            const response = await axios.get(`http://vaibhavarora2-001-site16.dtempurl.com/api/candidatedetail?id=${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            return response.data.data
+            
+        } catch (error) {
+            throw error
+        }
+}

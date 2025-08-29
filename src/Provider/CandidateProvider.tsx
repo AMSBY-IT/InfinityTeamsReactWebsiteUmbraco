@@ -6,6 +6,7 @@ import {
   Levels,
   Candidates,
   CandidateProviderProps,
+  Candidate,
 } from '../Types/types';
 import { CandidateContext, initialState } from './CandidateContext';
 
@@ -30,7 +31,8 @@ export type Action =
     pageSize:number;
   minYearsOfExperience: number | null;
         maxYearsOfExperience: number| null; 
-      }};
+      }}
+    |{ type: 'SET_CANDIDATEBYID'; payload: Candidate };
 
 
 
@@ -68,6 +70,8 @@ const Reducer = (state: typeof initialState, action: Action) => {
         ...state, 
         filters: action.payload 
       };
+      case 'SET_CANDIDATEBYID':
+      return { ...state, candidateById: action.payload };
     default:
       return state;
   }

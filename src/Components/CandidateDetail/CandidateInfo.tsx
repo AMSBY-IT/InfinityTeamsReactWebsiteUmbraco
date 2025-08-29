@@ -4,9 +4,18 @@ import ExperienceSection from './ExperienceSection';
 import SkillsSection from './SkillsSection';
 import CandidateOverview from './CandidateOverview';
 import NameSection from './NameSection';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import CertificateSection from './CertificateSection';
+import OtherSection from './OtherSection';
+import { CandidateContext } from '../../Provider/CandidateContext';
 
 const CandidateInfo = () => {
+    const {candidateById} = useContext(CandidateContext);
+
+    const hasSections =
+        (candidateById?.workExperienceDetails?.length > 0) ||
+        (candidateById?.eductionDetails?.length > 0) ||
+        (candidateById?.certifications?.length > 0);
   useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -36,9 +45,17 @@ const CandidateInfo = () => {
             </div>
 
             <div className="tw-max-w-6xl tw-mx-auto tw-p-4">
-                <div className="tw-bg-white tw-rounded-lg tw-border tw-p-6">
+                {hasSections && (
+                    <div className="tw-bg-white tw-rounded-lg tw-border tw-p-6">
                     <ExperienceSection />
                     <EducationSection />
+                    <CertificateSection/>
+                </div>
+                )}
+            </div>
+            <div className="tw-max-w-6xl tw-mx-auto tw-p-4">
+                <div className="tw-bg-white tw-rounded-lg tw-border tw-p-6">
+                    <OtherSection/>
                 </div>
             </div>
         </>

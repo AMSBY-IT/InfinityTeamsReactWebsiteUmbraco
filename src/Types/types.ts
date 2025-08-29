@@ -16,6 +16,7 @@ export interface CandidateContextProps {
     token:string;
     dispatch: Dispatch<Action>;
     filters: Filters
+    candidateById:Candidate
 }
 
 export interface Filters {
@@ -67,7 +68,7 @@ export interface Levels {
 }
 
 export interface Candidates {
-    id: string;
+    id: number;
     firstName: string;
     middleName: string;
     lastName: string
@@ -128,4 +129,61 @@ export interface User {
     username: string;
     password: string
 }
+
+export interface Candidate {
+  professionalDetails: {
+    professionalDetailsAndSummary: string;
+  }[];
+  eductionDetails: {
+    instituteName: string;
+    location: string;
+    degreeCertification: string;
+    graduationYear: string;
+    gradeCgpa: string;
+  }[];
+  workExperienceDetails: {
+    companyName: string;
+    levelOfExperience: string;
+    designationDeveloperTag: string;
+    experienceDetails: string;
+  }[];
+  certifications: {
+    certificationName: string;
+    certificationDate: string; // ISO Date string
+    isCertificationValid: string; // "Yes" or "No"
+    certificationGroup: string;
+    notes: string;
+  }[];
+  id: number;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  emailAddress: string;
+  contactNumber: string;
+  communicationSkills: string;
+  currentCompanyName: string;
+  lastCompanyName: string;
+  sector: string;
+  currentMostRecentJobTitle: string;
+  totalYearsOfExperience: string;
+  numberOfYearsInSpecific: string;
+  locationCity: string;
+  country: string;
+  skills: string[];
+  methodology: string[];
+  tools: string[];
+  candidateLevel: string[];
+  cvUrl: string;
+  otherAttachmentsUrl: string | null;
+  cctc: number;
+  ectc: number;
+  ectcComment: string;
+  noticePeriod: string;
+  noticePeriodComment: string;
+  remarks: string;
+  interested: string; // "Yes" or "No"
+  interestedComment: string;
+  lastContactedDate: string; // ISO Date string
+};
+
 

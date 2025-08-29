@@ -712,6 +712,10 @@ video {
   height: 3.5rem;
 }
 
+.tw-h-16 {
+  height: 4rem;
+}
+
 .tw-h-5 {
   height: 1.25rem;
 }
@@ -746,10 +750,6 @@ video {
 
 .tw-h-screen {
   height: 100vh;
-}
-
-.tw-h-16 {
-  height: 4rem;
 }
 
 .tw-w-12 {
@@ -1060,11 +1060,6 @@ video {
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
 }
 
-.tw-border-b-white {
-  --tw-border-opacity: 1;
-  border-bottom-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
-}
-
 .tw-border-b-\[\#dbd5d3\] {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(219 213 211 / var(--tw-border-opacity, 1));
@@ -1083,6 +1078,10 @@ video {
 .tw-bg-\[\#d2dbd8\] {
   --tw-bg-opacity: 1;
   background-color: rgb(210 219 216 / var(--tw-bg-opacity, 1));
+}
+
+.tw-bg-\[\#dddd\] {
+  background-color: #dddd;
 }
 
 .tw-bg-\[\#e7edeb\] {
@@ -1125,14 +1124,14 @@ video {
   background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
 }
 
-.tw-bg-pink-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(236 72 153 / var(--tw-bg-opacity, 1));
-}
-
 .tw-bg-red-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(127 29 29 / var(--tw-bg-opacity, 1));
+}
+
+.tw-bg-slate-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity, 1));
 }
 
 .tw-bg-transparent {
@@ -1154,18 +1153,9 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
-.tw-bg-\[\#9c97a7\] {
+.tw-bg-gray-400 {
   --tw-bg-opacity: 1;
-  background-color: rgb(156 151 167 / var(--tw-bg-opacity, 1));
-}
-
-.tw-bg-\[\#ddd\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(221 221 221 / var(--tw-bg-opacity, 1));
-}
-
-.tw-bg-\[\#dddd\] {
-  background-color: #dddd;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity, 1));
 }
 
 .tw-fill-\[\#7f56d9\] {
@@ -1262,6 +1252,10 @@ video {
   padding-top: 6rem;
 }
 
+.tw-pt-3 {
+  padding-top: 0.75rem;
+}
+
 .tw-pt-4 {
   padding-top: 1rem;
 }
@@ -1272,10 +1266,6 @@ video {
 
 .tw-pt-6 {
   padding-top: 1.5rem;
-}
-
-.tw-pt-3 {
-  padding-top: 0.75rem;
 }
 
 .tw-text-center {
@@ -1293,6 +1283,10 @@ video {
 
 .tw-text-\[12px\] {
   font-size: 12px;
+}
+
+.tw-text-\[13px\] {
+  font-size: 13px;
 }
 
 .tw-text-\[14px\] {
@@ -1321,15 +1315,6 @@ video {
 .tw-text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.tw-text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
-.tw-text-\[13px\] {
-  font-size: 13px;
 }
 
 .tw-font-bold {
@@ -1632,11 +1617,6 @@ body{
     --tw-space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0px * var(--tw-space-y-reverse));
-  }
-
-  .sm\:tw-text-base {
-    font-size: 1rem;
-    line-height: 1.5rem;
   }
 }
 

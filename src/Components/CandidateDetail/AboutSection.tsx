@@ -1,17 +1,39 @@
+import { useContext } from "react";
+import { CandidateContext } from "../../Provider/CandidateContext";
+
 const AboutSection = () => {
+
+  const {candidateById} = useContext(CandidateContext);
+
+  const cleanText = (textArray:string[]) => {
+    if (!textArray || textArray.length === 0) return "";
+    
+    // Join the array into a single string
+    const combinedText = textArray.join(" ");
+    
+    // Replace HTML entities with their actual characters
+    // Remove bullet points (•) and any leading/trailing spaces
+    return combinedText
+      .replace(/&amp;/g, "&")
+      .replace(/&nbsp;/g, " ")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/•/g, "") // Remove bullet points
+      .replace(/\s+/g, " ") // Replace multiple spaces with single space
+      .trim(); // Remove leading/trailing spaces
+  };
     return (
-        <div className="tw-bg-white tw-rounded-lg tw-border tw-p-6">
-            <h2 className="tw-text-xl tw-font-semibold tw-mb-4">About the candidate</h2>
+        <>
+            {candidateById.professionalDetails?.length > 0 && (
+              <div className="tw-bg-white tw-rounded-lg tw-border tw-p-6">
+              <h2 className="tw-text-xl tw-font-semibold tw-mb-4">About the candidate</h2>
             <p className="tw-text-gray-700 tw-text-md tw-leading-relaxed tw-mb-6">
-              Microsoft is an equal opportunity employer. All qualified applicants will receive consideration for
-              employment without regard to age, ancestry, color, family or medical care leave, gender identity or
-              expression, genetic information, marital status, medical condition, national origin, physical or mental
-              disability, political affiliation, protected veteran status, race, religion, sex (including pregnancy),
-              sexual orientation, or any other characteristic protected by applicable laws, regulations and ordinances.
-              All qualified applicants will receive consideration for employment.
+              {cleanText(candidateById.professionalDetails.map(p => p.professionalDetailsAndSummary))}
             </p>
 
-            <div className="tw-space-y-4">
+            {/* <div className="tw-space-y-4">
               <h3 className="tw-font-medium">Responsibilities:</h3>
               <ul className="tw-list-disc tw-pl-6 tw-text-sm tw-text-gray-700 tw-space-y-2">
                 <li>Deliver the project or solution as per the baseline scope, cost & schedule.</li>
@@ -23,8 +45,10 @@ const AboutSection = () => {
             <button className="tw-mt-4 tw-text-blue-600 tw-text-sm tw-flex tw-items-center">
               <span className="tw-mr-1">See more</span>
               <span className="tw-text-blue-600">•••</span>
-            </button>
-        </div>
+            </button> */}
+               </div>
+            )}
+       </>
     )
 }
 

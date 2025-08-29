@@ -6,6 +6,7 @@ import {
   Levels,
   Candidates,
   CandidateContextProps,
+  Candidate,
 } from '../Types/types';
 
 
@@ -30,7 +31,8 @@ export const initialState = {
     pageSize: 10,
     minYearsOfExperience: null as number | null,
     maxYearsOfExperience: null as number | null
-  }
+  },
+  candidateById:{} as Candidate
 };
 
 export const CandidateContext = createContext<
