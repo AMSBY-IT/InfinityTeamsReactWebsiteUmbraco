@@ -128,7 +128,7 @@ export const getCandidateById = async (id: number)=>{
   if (!token) return;
   try {
             
-            const response = await axios.get(`http://vaibhavarora2-001-site16.dtempurl.com/api/candidatedetail?id=${id}`, {
+            const response = await axios.get(`https://vaibhavarora2-001-site16.dtempurl.com/api/candidatedetail?id=${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
