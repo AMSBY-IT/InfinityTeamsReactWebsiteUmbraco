@@ -34,7 +34,7 @@ const CandidateCard = () => {
                                 <div className="tw-flex tw-flex-col tw-gap-1">
                                     <h2 className="tw-leading-5 tw-text-[18px] tw-text-untitled-ui--gray900 tw-m-0 tw-font-medium">{candidate.firstName} {candidate.lastName}</h2>
                                     {candidate.totalYearsOfExperience && (
-                                    <p className="tw-text-[13px] tw-font-medium tw-text-untitled-ui--gray800 tw-m-0">Experience: {candidate.totalYearsOfExperience}years</p>
+                                    <p className="tw-text-[13px] tw-font-medium tw-text-untitled-ui--gray800 tw-m-0">Experience: {candidate.totalYearsOfExperience} years</p>
                                 )}
                                     {/* <span className="tw-text-[11px] tw-font-medium tw-text-untitled-ui--gray800">{candidate.currentJobTitle}</span>
                                     <span className="tw-text-[12px] tw-text-untitled-ui--gray900 tw-flex tw-gap-1 tw-items-center">{candidate.currentAddress ? <svg xmlns="http://www.w3.org/2000/svg" className="tw-w-4 tw-fill-[#7f56d9]" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7m0 9.5a2.5 2.5 0 0 1 0-5a2.5 2.5 0 0 1 0 5"/></svg> : ""}{candidate.currentAddress}</span> */}

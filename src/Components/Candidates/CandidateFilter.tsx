@@ -158,7 +158,7 @@ export const CandidateFilter = () => {
                                 </div>
                                 <Select
                                     options={developerOptions}
-                                    placeholder="Add Keywords"
+                                    placeholder="Select Designation"
                                     isMulti
                                     styles={customStyles}
                                     value={selectedTitle}
@@ -177,7 +177,7 @@ export const CandidateFilter = () => {
                                 </div>
                                 <Select
                                     options={countryOptions}
-                                    placeholder="All Countries"
+                                    placeholder="Select Countries"
                                     isMulti
                                     styles={customStyles}
                                     value={selectedCountries}
@@ -198,7 +198,7 @@ export const CandidateFilter = () => {
                                 </div>
                                 <Select
                                     options={skillOptions}
-                                    placeholder="Add Skills"
+                                    placeholder="Select Skills"
                                     isMulti
                                     styles={customStyles}
                                     value={selectedSkills}

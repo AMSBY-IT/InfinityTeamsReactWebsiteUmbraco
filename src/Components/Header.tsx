@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getAuthToken, logOutUser } from "../api/services";
+import { useNavigate } from "react-router-dom";
 // import { useLocation } from "react-router-dom"
 
 const Header=()=> {
@@ -9,6 +10,7 @@ const Header=()=> {
 
     const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
     // const location = useLocation();
+    const navigate = useNavigate();
 
     const toggleSidebar = () => {
         setSidebarOpen(!isSidebarOpen);
@@ -20,12 +22,15 @@ const Header=()=> {
 
     // const isActive = (path:string) => location.pathname === path;
 
-    const Logout =()=>{
-        const token=getAuthToken()
-        if (!token) return;
-        logOutUser(token)
+    const Logout = async () => {
+    const token = getAuthToken();
+    if (!token) return;
 
+    const response = await logOutUser(token);
+    if (response) {
+      navigate("/login"); // ✅ Redirect to login page
     }
+  };
 
     return (
         <>

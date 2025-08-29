@@ -47,7 +47,7 @@ export default function MinimumDistanceSlider() {
   };
 
   return (
-    <div className='tw-w-full tw-pt-5 tw-flex tw-items-center tw-flex-col tw-justify-center'>
+    <div className='tw-w-full tw-pt-5 tw-flex tw-items-start tw-flex-col tw-justify-center'>
       <div className='tw-flex tw-justify-start tw-items-center tw-pb-1 tw-w-full tw-capitalize tw-text-lg tw-font-medium tw-cursor-pointer tw-text-[#242121]'>
         Experience in Years
       </div>
