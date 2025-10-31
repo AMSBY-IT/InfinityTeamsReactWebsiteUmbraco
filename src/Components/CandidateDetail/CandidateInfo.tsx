@@ -8,6 +8,7 @@ import { useContext, useEffect } from 'react';
 import CertificateSection from './CertificateSection';
 import OtherSection from './OtherSection';
 import { CandidateContext } from '../../Provider/CandidateContext';
+import BackButton from '../Shared/BackButton';
 
 const CandidateInfo = () => {
     const {candidateById} = useContext(CandidateContext);
@@ -22,6 +23,9 @@ const CandidateInfo = () => {
 
     return (
         <>
+        <div className="tw-max-w-6xl tw-mx-auto tw-p-4">
+                <BackButton />
+            </div>
             <div className="tw-max-w-6xl tw-mx-auto tw-p-4">
                 <NameSection />
             </div>

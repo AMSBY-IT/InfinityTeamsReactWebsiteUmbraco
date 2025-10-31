@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { CandidateContext } from "../../Provider/CandidateContext";
-import BackButton from "../Shared/BackButton";
 
 const NameSection = () => {
   const {candidateById} = useContext(CandidateContext);
@@ -66,7 +65,6 @@ const NameSection = () => {
                   >
                     Download Cv
                   </button>
-                  <BackButton/>
                 </div>
             </div>
           </div>

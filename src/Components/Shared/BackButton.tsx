@@ -1,3 +1,4 @@
+import { MoveLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const BackButton = () => {
@@ -7,9 +8,10 @@ const BackButton = () => {
         navigate(-1);
     };
   return (
-    <button className="tw-text-black tw-text-sm tw-cursor-pointer tw-px-3 tw-py-2 tw-bg-[#dddd] tw-rounded-md"
+    <button className="tw-flex tw-gap-1 tw-justify-center tw-items-center tw-text-red tw-text-sm tw-cursor-pointer"
     onClick={handleBack}>
-      Back to home
+        <MoveLeft color="#9f4444" />
+      <span className="tw-text-[#9f4444]">Back to home</span>
     </button>
   );
 };
