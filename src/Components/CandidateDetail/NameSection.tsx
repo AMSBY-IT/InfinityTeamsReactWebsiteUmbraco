@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { CandidateContext } from "../../Provider/CandidateContext";
+import BackButton from "../Shared/BackButton";
 
 const NameSection = () => {
   const {candidateById} = useContext(CandidateContext);
@@ -57,7 +58,7 @@ const NameSection = () => {
                   <span>14 hours ago</span> */}
                 </div>
               </div>
-              <div>
+              <div className="tw-flex tw-flex-col tw-gap-2">
                   <button 
                   className="tw-text-black tw-text-sm tw-cursor-pointer tw-px-3 tw-py-2 tw-bg-[#dddd] tw-rounded-md"
                   onClick={downloadCv}
@@ -65,6 +66,7 @@ const NameSection = () => {
                   >
                     Download Cv
                   </button>
+                  <BackButton/>
                 </div>
             </div>
           </div>

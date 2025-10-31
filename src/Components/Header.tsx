@@ -28,7 +28,7 @@ const Header=()=> {
 
     const response = await logOutUser(token);
     if (response) {
-      navigate("/login"); // ✅ Redirect to login page
+      navigate("/login");
     }
   };
 
