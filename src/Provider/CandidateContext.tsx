@@ -32,7 +32,7 @@ export const initialState = {
     minYearsOfExperience: null as number | null,
     maxYearsOfExperience: null as number | null
   },
-  candidateById:{} as Candidate
+  candidateById:{} as Candidate | null
 };
 
 export const CandidateContext = createContext<

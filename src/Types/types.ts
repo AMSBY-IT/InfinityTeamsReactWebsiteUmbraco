@@ -16,7 +16,7 @@ export interface CandidateContextProps {
     token:string;
     dispatch: Dispatch<Action>;
     filters: Filters
-    candidateById:Candidate
+    candidateById:Candidate | null
 }
 
 export interface Filters {
