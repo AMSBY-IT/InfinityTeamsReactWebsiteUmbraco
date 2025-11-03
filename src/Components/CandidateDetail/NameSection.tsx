@@ -48,11 +48,11 @@ const NameSection = () => {
             <div className="tw-flex tw-justify-between tw-items-center">
               <div>
                 <h1 className="tw-text-2xl tw-font-bold tw-text-gray-900">
-                  {candidateById.firstName} {candidateById.lastName}
+                  {candidateById?.firstName} {candidateById?.lastName}
                 </h1>
-                <p className="tw-text-lg tw-text-gray-800 tw-mt-1">{candidateById.currentCompanyName}</p>
+                <p className="tw-text-lg tw-text-gray-800 tw-mt-1">{candidateById?.currentCompanyName}</p>
                 <div className="tw-flex tw-items-center tw-mt-3 tw-text-gray-500">
-                  <span>{candidateById.locationCity}</span>
+                  <span>{candidateById?.locationCity}</span>
                   {/* <span className="tw-mx-2">•</span>
                   <span>14 hours ago</span> */}
                 </div>

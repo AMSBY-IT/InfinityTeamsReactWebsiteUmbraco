@@ -20,7 +20,7 @@ const CandidateOverview = () => {
                             <Mail className="tw-h-5 tw-w-5" />
                         </div>
                         <div>
-                            <p className="tw-font-medium tw-text-md">{candidateById.emailAddress ?? '-'}</p>
+                            <p className="tw-font-medium tw-text-md">{candidateById?.emailAddress ?? '-'}</p>
                             <p className="tw-text-sm tw-text-gray-500">Email</p>
                         </div>
                     </div>
@@ -30,7 +30,7 @@ const CandidateOverview = () => {
                             <Briefcase className="tw-h-5 tw-w-5" />
                         </div>
                         <div>
-                            <p className="tw-font-medium tw-text-md">{candidateById.sector ?? '-'}</p>
+                            <p className="tw-font-medium tw-text-md">{candidateById?.sector ?? '-'}</p>
                             <p className="tw-text-sm tw-text-gray-500">Industry</p>
                         </div>
                     </div>
@@ -40,7 +40,7 @@ const CandidateOverview = () => {
                             <Phone className="tw-h-5 tw-w-5" />
                         </div>
                         <div>
-                            <p className="tw-font-medium tw-text-md">{candidateById.contactNumber ?? '-'}</p>
+                            <p className="tw-font-medium tw-text-md">{candidateById?.contactNumber ?? '-'}</p>
                             <p className="tw-text-sm tw-text-gray-500">Contact No.</p>
                         </div>
                     </div>
@@ -50,7 +50,7 @@ const CandidateOverview = () => {
                             <Activity className="tw-h-5 tw-w-5" />
                         </div>
                         <div>
-                            <p className="tw-font-medium tw-text-md">{candidateById.totalYearsOfExperience ?? '-'} years</p>
+                            <p className="tw-font-medium tw-text-md">{candidateById?.totalYearsOfExperience ?? '-'} years</p>
                             <p className="tw-text-sm tw-text-gray-500">Experience</p>
                         </div>
                     </div>
@@ -61,7 +61,7 @@ const CandidateOverview = () => {
                         </div>
                         <div>
                             <p className="tw-font-medium tw-text-md">{
-    candidateById.communicationSkills
+    candidateById?.communicationSkills
       ? (() => {
           try {
             const parsed = JSON.parse(candidateById.communicationSkills);

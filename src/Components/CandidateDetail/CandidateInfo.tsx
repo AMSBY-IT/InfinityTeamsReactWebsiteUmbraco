@@ -38,10 +38,11 @@ const CandidateInfo = () => {
     }, [dispatch]);
   
 
-    const hasSections =
-        (candidateById?.workExperienceDetails?.length > 0) ||
-        (candidateById?.eductionDetails?.length > 0) ||
-        (candidateById?.certifications?.length > 0);
+    const hasSections = (
+        (candidateById?.workExperienceDetails?.length ?? 0) > 0 ||
+        (candidateById?.eductionDetails?.length ?? 0) > 0 ||
+        (candidateById?.certifications?.length ?? 0) > 0
+    );
   useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

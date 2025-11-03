@@ -32,7 +32,7 @@ export type Action =
   minYearsOfExperience: number | null;
         maxYearsOfExperience: number| null; 
       }}
-    |{ type: 'SET_CANDIDATEBYID'; payload: Candidate | null};
+    |{ type: 'SET_CANDIDATEBYID'; payload: Candidate |null };
 
 
 
