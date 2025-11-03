@@ -5,6 +5,7 @@ import { useContext, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { candidateFetch } from "../../api/services";
 import { CandidateContext } from "../../Provider/CandidateContext";
+import Loader from "../Loader";
 
 
 const Candidate = () => {
@@ -22,7 +23,7 @@ const requestModel = {
     // Add other filter parameters as needed
   };
 
-    const { data:candidateData,isFetched,refetch} = useQuery({queryKey:['candidate'], queryFn:()=>candidateFetch(requestModel)});
+    const { data:candidateData,isFetched,refetch,isFetching} = useQuery({queryKey:['candidate'], queryFn:()=>candidateFetch(requestModel)});
 
     useEffect(() => {
     refetch(); // Refetch when filters change
@@ -39,6 +40,10 @@ const requestModel = {
       dispatch({ type: "SET_CANDIDATES", payload: candidateData.items });
     }
   },[candidateData,dispatch])
+
+  if(isFetching){
+    return <Loader/>
+  }
 
     return (
         <>

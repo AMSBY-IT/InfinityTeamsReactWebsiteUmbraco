@@ -9,9 +9,34 @@ import CertificateSection from './CertificateSection';
 import OtherSection from './OtherSection';
 import { CandidateContext } from '../../Provider/CandidateContext';
 import BackButton from '../Shared/BackButton';
+import { getCandidateById } from '../../api/services';
+import { useParams } from 'react-router-dom';
+import Loader from '../Loader';
 
 const CandidateInfo = () => {
-    const {candidateById} = useContext(CandidateContext);
+    const { id } = useParams<{ id: string }>();
+    const {candidateById,dispatch} = useContext(CandidateContext);
+
+
+  useEffect(() => {
+    const fetchCandidate = async () => {
+    if (!id) return;
+
+    const candidateId = parseInt(id);
+    const data = await getCandidateById(candidateId);
+    dispatch({ type: "SET_CANDIDATEBYID", payload: data });
+      
+    };
+
+    fetchCandidate();
+  }, [id, dispatch]);
+
+  useEffect(() => {
+        return () => {
+            dispatch({ type: "SET_CANDIDATEBYID", payload: null });
+        };
+    }, [dispatch]);
+  
 
     const hasSections =
         (candidateById?.workExperienceDetails?.length > 0) ||
@@ -20,6 +45,10 @@ const CandidateInfo = () => {
   useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    if (!candidateById) {
+    return <Loader/>;
+  }
 
     return (
         <>

@@ -32,20 +32,6 @@ const AboutSection = () => {
             <p className="tw-text-gray-700 tw-text-md tw-leading-relaxed tw-mb-6">
               {cleanText(candidateById.professionalDetails.map(p => p.professionalDetailsAndSummary))}
             </p>
-
-            {/* <div className="tw-space-y-4">
-              <h3 className="tw-font-medium">Responsibilities:</h3>
-              <ul className="tw-list-disc tw-pl-6 tw-text-sm tw-text-gray-700 tw-space-y-2">
-                <li>Deliver the project or solution as per the baseline scope, cost & schedule.</li>
-                <li>Maintain high team & customer satisfaction levels.</li>
-                <li>Ensure high quality delivery without any escalations.</li>
-              </ul>
-            </div>
-
-            <button className="tw-mt-4 tw-text-blue-600 tw-text-sm tw-flex tw-items-center">
-              <span className="tw-mr-1">See more</span>
-              <span className="tw-text-blue-600">•••</span>
-            </button> */}
                </div>
             )}
        </>

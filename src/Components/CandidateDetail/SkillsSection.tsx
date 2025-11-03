@@ -4,10 +4,16 @@ import { CandidateContext } from "../../Provider/CandidateContext";
 const SkillsSection = () => {
 
     const {candidateById} = useContext(CandidateContext);
+
+    const hasSkills = candidateById?.skills?.length > 0;
+    const hasTools = candidateById?.tools?.length > 0;
+    const hasMethodology = candidateById?.methodology?.length > 0;
+
+    if (!hasSkills && !hasTools && !hasMethodology) return null;
     return (
         <div className="tw-bg-white tw-rounded-lg tw-border tw-p-6">
             <div className="tw-space-y-6">
-           {candidateById.skills?.length > 0 && (
+           {hasSkills && (
             <>
             <h2 className="tw-text-xl tw-font-semibold tw-mb-4">Skills</h2>
             <div className="tw-flex tw-flex-wrap tw-gap-2">
@@ -20,7 +26,7 @@ const SkillsSection = () => {
             </>
            )} 
 
-            {candidateById.tools?.length > 0 && (
+            {hasTools && (
                 <>
                 <h2 className="tw-text-xl tw-font-semibold tw-mb-4">Tools</h2>
             <div className="tw-flex tw-flex-wrap tw-gap-2">
@@ -32,7 +38,7 @@ const SkillsSection = () => {
             </div></>
             )}
 
-            {candidateById.methodology?.length > 0 && (
+            {hasMethodology && (
                 <>
                 <h2 className="tw-text-xl tw-font-semibold tw-mb-4">Methodology</h2>
             <div className="tw-flex tw-flex-wrap tw-gap-2">
